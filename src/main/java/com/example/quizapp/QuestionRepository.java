@@ -6,5 +6,6 @@ import java.util.List;
 
 
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
-    List<Question> findByCategory(String category);
+    // finding question by category by ignoring case-sensitivity
+    List<Question> findByCategoryIgnoreCase(String category);
 }

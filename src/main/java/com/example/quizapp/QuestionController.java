@@ -1,6 +1,7 @@
 package com.example.quizapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,9 @@ public class QuestionController {
     @GetMapping("/category/{category}")
     public List<Question> getAllQuestionsBasedOnCategory(@PathVariable String category) {
         // Implement logic to fetch questions based on the category from the database
+        if (category == null || category.trim().isEmpty()) {
+            throw new IllegalArgumentException("Category cannot be null or empty");
+        }
         return questionService.getAllQuestionsBasedOnCategory(category);
     }
 }

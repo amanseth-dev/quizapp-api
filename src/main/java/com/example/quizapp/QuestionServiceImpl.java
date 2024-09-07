@@ -16,10 +16,10 @@ public class QuestionServiceImpl implements QuestionService{
         return questionRepository.findAll();
     }
 
+    // method to retrieve questions based on category
     @Override
     public List<Question> getAllQuestionsBasedOnCategory(String category) {
-        return questionRepository.findByCategory(category);
+        // finding questions based on the category ignoring the case-sensitivity
+        return questionRepository.findByCategoryIgnoreCase(category);
     }
-
-
 }
