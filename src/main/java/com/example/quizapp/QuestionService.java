@@ -5,4 +5,8 @@ import java.util.List;
 public interface QuestionService {
     // method to retrieve all questions
     List<Question> getAllQuestions();
+
+    List<Question> getAllQuestionsBasedOnCategory(String category);
+
+
 }

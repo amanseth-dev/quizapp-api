@@ -15,4 +15,11 @@ public class QuestionServiceImpl implements QuestionService{
     public List<Question> getAllQuestions() {
         return questionRepository.findAll();
     }
+
+    @Override
+    public List<Question> getAllQuestionsBasedOnCategory(String category) {
+        return questionRepository.findByCategory(category);
+    }
+
+
 }
