@@ -22,4 +22,10 @@ public class QuestionServiceImpl implements QuestionService{
         // finding questions based on the category ignoring the case-sensitivity
         return questionRepository.findByCategoryIgnoreCase(category);
     }
+
+    // method to retrieve questions based on difficulty level
+    @Override
+    public List<Question> getQuestionsBasedOnDifficultyLevel(String difficulty) {
+        return questionRepository.findByDifficultyLevelIgnoreCase(difficulty);
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.quizapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,5 +24,15 @@ public class QuestionController {
             throw new IllegalArgumentException("Category cannot be null or empty");
         }
         return questionService.getAllQuestionsBasedOnCategory(category);
+    }
+
+    // method to retrieve questions based on difficulty level
+    @GetMapping("/difficultyLevel/{difficulty}")
+    public List<Question> getQuestionsBasedOnDifficulty(@PathVariable String difficulty) {
+        // Implement logic to fetch questions based on the difficulty level from the database
+        if (difficulty == null || difficulty.trim().isEmpty()) {
+            throw new IllegalArgumentException("Difficulty cannot not be null");
+        }
+        return questionService.getQuestionsBasedOnDifficultyLevel(difficulty);
     }
 }

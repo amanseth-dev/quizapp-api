@@ -9,5 +9,6 @@ public interface QuestionService {
     // method to retrieve questions based on category
     List<Question> getAllQuestionsBasedOnCategory(String category);
 
-
+    // method to retrieve questions based on difficulty level
+    List<Question> getQuestionsBasedOnDifficultyLevel(String difficulty);
 }
