@@ -12,7 +12,6 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-    // method to retrieve all questions from the database and return them as a list of Question objects
     @GetMapping("allQuestions")
     public ResponseEntity<List<Question>> getAllQuestions() {
         // logic to fetch all questions from the database
@@ -48,15 +47,8 @@ public class QuestionController {
 
     // method to update questions
     @PutMapping("/updateQuestions/{id}")
-    public ResponseEntity<String> updateQuestions(@RequestBody Question question, @PathVariable Integer id) {
+    public ResponseEntity<String> updateQuestions(@RequestBody Question question, @PathVariable Integer id){
         // logic to update a question in the database
         return questionService.updateQuestion(question, id);
-    }
-
-    // method to delete question by id
-    @DeleteMapping("/deleteQuestion/{id}")
-    public ResponseEntity<String> deleteQuestions(@PathVariable Integer id) {
-        // logic to delete a question from the database
-        return questionService.deleteQuestion(id);
     }
 }

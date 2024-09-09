@@ -83,21 +83,4 @@ public class QuestionServiceImpl implements QuestionService{
         }
         return new ResponseEntity<>("Question not updated..", HttpStatus.BAD_REQUEST);
     }
-
-    @Override
-    public ResponseEntity<String> deleteQuestion(Integer id) {
-        try {
-            // find question if it exists
-            Question existingQuestion = questionRepository.findById(id).orElse(null);
-            if(existingQuestion != null) {
-                questionRepository.deleteById(id);
-                return new ResponseEntity<>("Question deleted successfully..", HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>("Question not found..", HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>("Question not found..", HttpStatus.BAD_REQUEST);
-    }
 }
