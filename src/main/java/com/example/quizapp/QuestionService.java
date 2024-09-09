@@ -17,4 +17,6 @@ public interface QuestionService {
     ResponseEntity<String> addQuestion(Question question);
 
     ResponseEntity<String> updateQuestion(Question question, Integer id);
+
+    ResponseEntity<String> deleteQuestion(Integer id);
 }
