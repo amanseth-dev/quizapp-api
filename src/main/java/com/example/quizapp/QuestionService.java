@@ -1,16 +1,18 @@
 package com.example.quizapp;
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 public interface QuestionService {
     // method to retrieve all questions
-    List<Question> getAllQuestions();
+    ResponseEntity<List<Question>> getAllQuestions();
 
     // method to retrieve questions based on category
-    List<Question> getAllQuestionsBasedOnCategory(String category);
+    ResponseEntity<List<Question>> getAllQuestionsBasedOnCategory(String category);
 
     // method to retrieve questions based on difficulty level
-    List<Question> getQuestionsBasedOnDifficultyLevel(String difficulty);
+    ResponseEntity<List<Question>> getQuestionsBasedOnDifficultyLevel(String difficulty);
 
-    String addQuestion(Question question);
+    ResponseEntity<String> addQuestion(Question question);
 }

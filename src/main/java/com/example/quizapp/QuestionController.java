@@ -1,6 +1,7 @@
 package com.example.quizapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,14 +13,14 @@ public class QuestionController {
     private QuestionService questionService;
 
     @GetMapping("allQuestions")
-    public List<Question> getAllQuestions() {
+    public ResponseEntity<List<Question>> getAllQuestions() {
         // logic to fetch all questions from the database
         return questionService.getAllQuestions();
     }
 
     // method to retrieve questions based on the category
     @GetMapping("/category/{category}")
-    public List<Question> getAllQuestionsBasedOnCategory(@PathVariable String category) {
+    public ResponseEntity<List<Question>> getAllQuestionsBasedOnCategory(@PathVariable String category) {
         // logic to fetch questions based on the category from the database
         if (category == null || category.trim().isEmpty()) {
             throw new IllegalArgumentException("Category cannot be null or empty");
@@ -29,7 +30,7 @@ public class QuestionController {
 
     // method to retrieve questions based on difficulty level
     @GetMapping("/difficultyLevel/{difficulty}")
-    public List<Question> getQuestionsBasedOnDifficulty(@PathVariable String difficulty) {
+    public ResponseEntity<List<Question>> getQuestionsBasedOnDifficulty(@PathVariable String difficulty) {
         // logic to fetch questions based on the difficulty level from the database
         if (difficulty == null || difficulty.trim().isEmpty()) {
             throw new IllegalArgumentException("Difficulty cannot not be null");
@@ -39,7 +40,7 @@ public class QuestionController {
 
     // method to add questions
     @PutMapping("/addQuestions")
-    public String addQuestions(@RequestBody Question question){
+    public ResponseEntity<String> addQuestions(@RequestBody Question question){
         // logic to add a new question to the database
         return questionService.addQuestion(question);
     }
