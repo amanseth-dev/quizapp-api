@@ -28,4 +28,11 @@ public class QuestionServiceImpl implements QuestionService{
     public List<Question> getQuestionsBasedOnDifficultyLevel(String difficulty) {
         return questionRepository.findByDifficultyLevelIgnoreCase(difficulty);
     }
+
+    // method to add a new question
+    @Override
+    public String addQuestion(Question question) {
+        questionRepository.save(question);
+        return "Question Successfully add..😎";
+    }
 }
