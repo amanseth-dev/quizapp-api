@@ -15,4 +15,6 @@ public interface QuestionService {
     ResponseEntity<List<Question>> getQuestionsBasedOnDifficultyLevel(String difficulty);
 
     ResponseEntity<String> addQuestion(Question question);
+
+    ResponseEntity<String> updateQuestion(Question question, Integer id);
 }

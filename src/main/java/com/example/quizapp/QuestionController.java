@@ -31,7 +31,7 @@ public class QuestionController {
     // method to retrieve questions based on difficulty level
     @GetMapping("/difficultyLevel/{difficulty}")
     public ResponseEntity<List<Question>> getQuestionsBasedOnDifficulty(@PathVariable String difficulty) {
-        // Implement logic to fetch questions based on the difficulty level from the database
+        // logic to fetch questions based on the difficulty level from the database
         if (difficulty == null || difficulty.trim().isEmpty()) {
             throw new IllegalArgumentException("Difficulty cannot not be null");
         }
@@ -45,4 +45,10 @@ public class QuestionController {
         return questionService.addQuestion(question);
     }
 
+    // method to update questions
+    @PutMapping("/updateQuestions/{id}")
+    public ResponseEntity<String> updateQuestions(@RequestBody Question question, @PathVariable Integer id){
+        // logic to update a question in the database
+        return questionService.updateQuestion(question, id);
+    }
 }

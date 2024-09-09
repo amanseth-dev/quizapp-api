@@ -58,4 +58,29 @@ public class QuestionServiceImpl implements QuestionService{
         }
         return new ResponseEntity<>("Question not added..", HttpStatus.BAD_REQUEST);
     }
+
+
+    @Override
+    public ResponseEntity<String> updateQuestion(Question question, Integer id) {
+        try {
+            Question existingQuestion = questionRepository.findById(id).orElse(null);
+            if(existingQuestion != null) {
+                existingQuestion.setQuestionTitle(question.getQuestionTitle());
+                existingQuestion.setOption1(question.getOption1());
+                existingQuestion.setOption2(question.getOption2());
+                existingQuestion.setOption3(question.getOption3());
+                existingQuestion.setOption4(question.getOption4());
+                existingQuestion.setCorrectAnswer(question.getCorrectAnswer());
+                existingQuestion.setCategory(question.getCategory());
+                existingQuestion.setDifficultyLevel(question.getDifficultyLevel());
+                questionRepository.save(existingQuestion);
+                return new ResponseEntity<>("Question updated successfully..", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Question not found..", HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("Question not updated..", HttpStatus.BAD_REQUEST);
+    }
 }
